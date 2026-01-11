@@ -1,0 +1,76 @@
+09:08:53 agreement relational
+         config: configs/agreement/relational/spatial_twoshapes.json
+                 {'world_size': 100, 'captions_per_instance': 5}
+09:08:53 generate agreement relational data...
+         0%  0/1  (time per shard: n/a)         100%  1/1  (time per shard: 0:00:22)
+09:09:15 data generation completed
+09:11:58 agreement relational
+         config: configs/agreement/relational/spatial_twoshapes.json
+                 {'world_size': 100, 'captions_per_instance': 5}
+09:11:58 generate agreement relational data...
+         0%  0/1  (time per shard: n/a)         100%  1/1  (time per shard: 0:00:21)
+09:12:20 data generation completed
+09:13:24 agreement relational
+         config: configs/agreement/relational/spatial_twoshapes.json
+                 {'world_size': 100, 'captions_per_instance': 5}
+09:13:24 generate agreement relational data...
+         0%  0/1  (time per shard: n/a)         100%  1/1  (time per shard: 0:00:22)
+09:13:46 data generation completed
+09:25:01 agreement relational
+         config: configs/agreement/relational/spatial_twoshapes.json
+                 {'world_size': 100, 'captions_per_instance': 5}
+09:25:01 generate agreement relational data...
+         0%  0/1  (time per shard: n/a)         100%  1/1  (time per shard: 0:00:21)
+09:25:22 data generation completed
+09:37:01 agreement relational
+         config: configs/agreement/relational/spatial_twoshapes.json
+                 {'caption_realizer': 'template_english', 'world_size': 100, 'captions_per_instance': 5}
+09:37:01 generate agreement relational data...
+         0%  0/1  (time per shard: n/a)Caption size exceeds max size: 18 > 15
+09:37:11 agreement relational
+         config: configs/agreement/relational/spatial_twoshapes.json
+                 {'caption_realizer': 'template_english', 'world_size': 100, 'captions_per_instance': 5}
+09:37:11 generate agreement relational data...
+         0%  0/1  (time per shard: n/a)Words missing in vocabulary: 'The', 'and', 'are', 'relation', 'shapes:', 'spatial', 'there', 'two'
+09:37:52 agreement relational
+         config: configs/agreement/relational/spatial_twoshapes.json
+                 {'caption_realizer': 'template_english', 'world_size': 100, 'captions_per_instance': 5}
+09:37:52 generate agreement relational data...
+         0%  0/1  (time per shard: n/a)         100%  1/1  (time per shard: 0:00:02)
+09:37:55 data generation completed
+09:50:10 agreement relational
+         config: configs/agreement/relational/spatial_twoshapes.json
+                 {'caption_realizer': 'template_english', 'world_size': 100, 'captions_per_instance': 1}
+09:50:10 generate agreement relational data...
+         0%  0/1  (time per shard: n/a)         100%  1/1  (time per shard: 0:00:01)
+09:50:12 data generation completed
+09:58:55 agreement relational
+         config: configs/agreement/relational/spatial_twoshapes.json
+                 {'caption_realizer': 'template_english', 'world_size': 100, 'captions_per_instance': 1}
+09:58:55 generate agreement relational data...
+         0%  0/1  (time per shard: n/a)         100%  1/1  (time per shard: 0:00:03)
+09:58:58 data generation completed
+10:04:25 agreement relational
+         config: configs/agreement/relational/spatial_twoshapes.json
+                 {'caption_realizer': 'template_english', 'world_size': 100, 'captions_per_instance': 1}
+10:04:25 generate agreement relational data...
+         0%  0/1  (time per shard: n/a)         100%  1/1  (time per shard: 0:00:03)
+10:04:29 data generation completed
+10:16:38 agreement relational
+         config: configs/agreement/relational/spatial_twoshapes.json
+                 {'caption_realizer': 'template_english', 'world_size': 100, 'captions_per_instance': 1}
+10:16:38 generate agreement relational data...
+         0%  0/5  (time per shard: n/a)         20%  1/5  (time per shard: 0:00:03)         40%  2/5  (time per shard: 0:00:03)         60%  3/5  (time per shard: 0:00:03)         80%  4/5  (time per shard: 0:00:03)         100%  5/5  (time per shard: 0:00:03)
+10:16:54 data generation completed
+10:21:32 agreement relational
+         config: configs/agreement/relational/spatial_twoshapes.json
+                 {'caption_realizer': 'template_english', 'world_size': 100, 'captions_per_instance': 1}
+Delete content of directory examples/agreement/relational-spatial_twoshapes/agreement/relational? 10:21:47 generate agreement relational data...
+         0%  0/5  (time per shard: n/a)         20%  1/5  (time per shard: 0:00:03)         40%  2/5  (time per shard: 0:00:02)         60%  3/5  (time per shard: 0:00:02)         80%  4/5  (time per shard: 0:00:03)         100%  5/5  (time per shard: 0:00:02)
+10:22:02 data generation completed
+10:22:36 agreement relational
+         config: configs/agreement/relational/spatial_twoshapes.json
+                 {'caption_realizer': 'template_english', 'world_size': 100, 'captions_per_instance': 1}
+10:22:36 generate agreement relational data...
+         0%  0/5  (time per shard: n/a)         20%  1/5  (time per shard: 0:00:03)         40%  2/5  (time per shard: 0:00:03)         60%  3/5  (time per shard: 0:00:02)         80%  4/5  (time per shard: 0:00:03)         100%  5/5  (time per shard: 0:00:03)
+10:22:53 data generation completed

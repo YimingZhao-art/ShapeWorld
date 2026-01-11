@@ -124,10 +124,22 @@ class Relation(Predicate):
 
         elif self.predtype == 'x-rel':
             # min distance in case of overlap
-            return any((entity.center.x - reference.center.x) * self.value > max(Settings.min_axis_distance, abs(entity.center.y - reference.center.y)) for reference in ref_entities)
+            if Settings.axis_tolerance is None:
+                return any((entity.center.x - reference.center.x) * self.value > max(Settings.min_axis_distance, abs(entity.center.y - reference.center.y)) for reference in ref_entities)
+            return any(
+                (entity.center.x - reference.center.x) * self.value > Settings.min_axis_distance and
+                abs(entity.center.y - reference.center.y) <= Settings.axis_tolerance
+                for reference in ref_entities
+            )
 
         elif self.predtype == 'y-rel':
-            return any((entity.center.y - reference.center.y) * self.value > max(Settings.min_axis_distance, abs(entity.center.x - reference.center.x)) for reference in ref_entities)
+            if Settings.axis_tolerance is None:
+                return any((entity.center.y - reference.center.y) * self.value > max(Settings.min_axis_distance, abs(entity.center.x - reference.center.x)) for reference in ref_entities)
+            return any(
+                (entity.center.y - reference.center.y) * self.value > Settings.min_axis_distance and
+                abs(entity.center.x - reference.center.x) <= Settings.axis_tolerance
+                for reference in ref_entities
+            )
 
         elif self.predtype == 'z-rel':
             return any(entity.collides(reference, ratio=True, symmetric=True) > Settings.min_overlap and (entity.id - reference.id) * self.value > 0 for reference in ref_entities)
@@ -183,10 +195,22 @@ class Relation(Predicate):
             return all(False for reference in ref_entities if reference != entity)
 
         elif self.predtype == 'x-rel':
-            return all((reference.center.x - entity.center.x) * self.value > Settings.min_axis_distance for reference in ref_entities)
+            if Settings.axis_tolerance is None:
+                return all((reference.center.x - entity.center.x) * self.value > Settings.min_axis_distance for reference in ref_entities)
+            return all(
+                (reference.center.x - entity.center.x) * self.value > Settings.min_axis_distance or
+                abs(entity.center.y - reference.center.y) > Settings.axis_tolerance
+                for reference in ref_entities
+            )
 
         elif self.predtype == 'y-rel':
-            return all((reference.center.y - entity.center.y) * self.value > Settings.min_axis_distance for reference in ref_entities)
+            if Settings.axis_tolerance is None:
+                return all((reference.center.y - entity.center.y) * self.value > Settings.min_axis_distance for reference in ref_entities)
+            return all(
+                (reference.center.y - entity.center.y) * self.value > Settings.min_axis_distance or
+                abs(entity.center.x - reference.center.x) > Settings.axis_tolerance
+                for reference in ref_entities
+            )
 
         elif self.predtype == 'z-rel':
             for reference in ref_entities:

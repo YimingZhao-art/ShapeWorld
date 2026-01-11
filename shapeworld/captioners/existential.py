@@ -18,7 +18,8 @@ class ExistentialCaptioner(WorldCaptioner):
         logical_redundancy_rate=0.0,
         logical_tautology_rate=0.0,
         logical_contradiction_rate=0.0,
-        incorrect_distribution=(1, 1)
+        incorrect_distribution=(1, 1),
+        require_different_shapes=False
     ):
         super(ExistentialCaptioner, self).__init__(
             internal_captioners=(restrictor_captioner, body_captioner),
@@ -32,6 +33,7 @@ class ExistentialCaptioner(WorldCaptioner):
         self.restrictor_captioner = restrictor_captioner
         self.body_captioner = body_captioner
         self.incorrect_distribution = util.cumulative_distribution(incorrect_distribution)
+        self.require_different_shapes = require_different_shapes
 
     def pn_length(self):
         return self.restrictor_captioner.pn_length() + self.body_captioner.pn_length() + 1
@@ -94,6 +96,8 @@ class ExistentialCaptioner(WorldCaptioner):
         restrictor = self.restrictor_captioner.caption(predication=rstr_body_predication, world=world)
         if restrictor is None:
             return None
+        if self.require_different_shapes and not self._different_shapes(restrictor=restrictor, body=body):
+            return None
 
         # also for incorrect
         # if not self.pragmatical_tautology and len(rstr_body_predication.agreeing) > 1 and (body_predication.equals(other=rstr_body_predication) or rstr_predication.equals(other=rstr_body_predication)):
@@ -105,6 +109,32 @@ class ExistentialCaptioner(WorldCaptioner):
             return None
 
         return existential
+
+    def _different_shapes(self, restrictor, body):
+        from shapeworld.captions import Attribute, EntityType, Relation, Selector
+
+        if not isinstance(body, Relation):
+            return True
+
+        def extract_entity_type(caption):
+            if isinstance(caption, EntityType):
+                return caption
+            if isinstance(caption, Selector):
+                return caption.scope
+            return None
+
+        restrictor_type = extract_entity_type(restrictor)
+        reference_type = extract_entity_type(body.reference)
+        if restrictor_type is None or reference_type is None:
+            return True
+
+        def shape_value(entity_type):
+            for predicate in entity_type.value:
+                if isinstance(predicate, Attribute) and predicate.predtype == 'shape':
+                    return predicate.value
+            return None
+
+        return shape_value(restrictor_type) != shape_value(reference_type)
 
     def incorrect(self, caption, predication, world):
         assert predication.empty()
